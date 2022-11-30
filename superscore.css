@@ -1,0 +1,28 @@
+body {
+    text-align: center;
+}
+div#superscore {
+    margin: auto;
+    border-color: black;
+    border-width: 10px;
+    border-style: solid;
+    width: fit-content;
+}
+
+#title {
+    font-size: xx-large;
+    font-weight: bold;
+
+}
+
+#clock {
+    font-size: x-large;
+}
+
+.score {
+    font-size: x-large;
+}
+
+#reset-buttons {
+    margin: 10pt;
+}
