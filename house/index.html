@@ -1244,29 +1244,45 @@
             mb.addBox(-28.0, 0.1, -25.5, -26.5, 10.6, -24.0, cBrick, 'retained', yMainOff, true); // Corner Brick Pier (Photo 6)
             mb.addStairs(-16.0, -25.0, -20.5, -21.8, -2.8, 0.1, 5, 'x', cBrick, 'retained', yMainOff, false);
 
-            // AS-BUILT INTERIOR PARTITIONS (Exact match to Sheet A-1.1 & Video 00:45-01:48!):
-            // 1. Breakfast Room (X=-28 to -14, Z=6 to 16.5) & Existing Kitchen (X=-28 to -14, Z=-6 to 6)
-            mb.addWallWithDoor(-28, 6, -14, 6, 0.2, 11.2, 0.45, 0.20, 0.65, 8.0, cIntWall, 'retained', yMainOff); // Wide cased opening 50710
-            mb.addWallWithDoor(-14, -6, -14, 6, 0.2, 11.2, 0.45, 0.72, 0.94, 7.6, cIntWall, 'retained', yMainOff); // Kitchen East wall w/ door 3080 at SE corner
-            mb.addWallWithDoor(-28, -6, -14, -6, 0.2, 11.0, 0.45, 0.28, 0.48, 7.4, cIntWall, 'retained', yMainOff); // Kitchen North wall to Laundry (door 2670)
-            // 2. Laundry (X=-23.5 to -14, Z=-13.5 to -6), Rear Entry (X=-28 to -23.5, Z=-21.5 to -13.5) & Rear Bath (X=-23.5 to -14, Z=-21.5 to -13.5)
-            mb.addWallWithDoor(-28, -13.5, -14, -13.5, 0.2, 10.6, 0.4, 0.45, 0.65, 7.2, [0.88, 0.83, 0.74, wallAlpha], 'retained', yMainOff); // Laundry/Bath wall (door 2068)
-            mb.addWallSegment(-23.5, -21.5, -23.5, -13.5, 0.2, 10.6, 0.4, cIntWall, 'retained', yMainOff); // Entry / Bath divider
-            // East wall of Rear Bath & Laundry (X=-14, Z=-21.5 to -6) with door 2670 walking directly into All-Season Sunroom (Video 01:24!)
-            mb.addWallWithDoor(-14, -21.5, -14, -6, 0.2, 10.6, 0.45, 0.14, 0.34, 7.4, [0.76, 0.84, 0.76, wallAlpha], 'retained', yMainOff);
-            // 3. Existing Middle "Primary Bedroom" (Sheet A-1.1: X=-14 to 1, Z=-12 to +6, Video 01:36-01:48)
-            mb.addWallWithDoor(-14, -12, 1, -12, 0.2, 11.5, 0.45, 0.72, 0.94, 7.8, cIntWall, 'retained', yMainOff); // Opening 30811MU into All-Season Sunroom
-            mb.addWallSegment(-14, 6, -2.5, 6, 0.2, 11.5, 0.45, cIntWall, 'retained', yMainOff);                     // South wall backing Dining Room (continuous at Z=6!)
-            mb.addWallSegment(-2.5, 0, -2.5, 6, 0.2, 11.5, 0.45, cIntWall, 'retained', yMainOff);                    // Return to North Hall wall at Z=0
-            mb.addWallWithDoor(-2.5, 0, 1, 0, 0.2, 11.5, 0.45, 0.15, 0.85, 7.6, cIntWall, 'retained', yMainOff);     // Door 3070 into Central Hallway at Z=0
+            // AS-BUILT INTERIOR PARTITIONS (Exact match to Sheet A-1.1 & Video 00:45-01:48 & 03:04!):
+            // 1. CENTRAL HALLWAY (Z=0.0 to 6.0) RUNS ALL THE WAY WEST TO THE KITCHEN AT X=-14.0! (Video Frame #47 & Sheet A-1.1)
+            //    - North wall of Central Hallway (Z=0.0, X=-14.0 to +1.0) is the South wall of the Existing Primary Bedroom, with Door 3070 (X=-3.8..-0.8) off the hallway!
+            mb.addWallWithDoor(-14.0, 0.0, 1.0, 0.0, 0.2, 11.5, 0.45, 0.68, 0.88, 7.8, cIntWall, 'retained', yMainOff);
+            //    - South wall of Central Hallway (Z=6.0, X=-14.0 to +3.0) is the North wall of the Dining Room, with Door 3080 (X=-13.8..-11.0) at the West end!
+            mb.addWallWithDoor(-14.0, 6.0, 3.0, 6.0, 0.2, 11.5, 0.5, 0.02, 0.18, 8.0, [0.57, 0.62, 0.53, wallAlpha], 'retained', yMainOff);
+            //    - Interior Hallway Door 2670 across the West end of the Central Hallway at X=-11.0 (Z=0.0 to 6.0, Sheet A-1.1 & Video Frame #47)
+            mb.addWallWithDoor(-11.0, 0.0, -11.0, 6.0, 0.2, 11.5, 0.4, 0.18, 0.78, 7.8, cIntWall, 'retained', yMainOff);
+
+            // 2. L-SHAPED EXISTING KITCHEN (Main area X=-28..-14, Z=-6..+6 + NW Extension X=-28..-23, Z=-12..-6; Sheet A-1.1 & Video Frames #15-#19):
+            mb.addWallWithDoor(-28, 6, -14, 6, 0.2, 11.2, 0.45, 0.20, 0.65, 8.0, cIntWall, 'retained', yMainOff);      // Wide cased opening 50710 to Breakfast
+            mb.addWallSegment(-14, -6.0, -14, 0.0, 0.2, 11.2, 0.45, cIntWall, 'retained', yMainOff);                   // Kitchen East cabinet wall (Z=-6 to 0)
+            mb.addWallWithDoor(-14, 0.0, -14, 6.0, 0.2, 11.2, 0.45, 0.15, 0.78, 7.8, cIntWall, 'retained', yMainOff);  // Kitchen doorway at West end of Central Hallway!
+            //    - Stepped/Chamfered North Wall of Kitchen separating Kitchen from Existing Laundry Room (Sheet A-1.1 & Video Frame #18-#19):
+            mb.addWallSegment(-20.5, -6.0, -14.0, -6.0, 0.2, 11.0, 0.45, cIntWall, 'retained', yMainOff);              // North wall behind 4-burner gas range & brick flue
+            mb.addWallSegment(-23.0, -8.5, -20.5, -6.0, 0.2, 11.0, 0.45, cIntWall, 'retained', yMainOff);              // 45-degree chamfered corner wall
+            mb.addWallWithDoor(-23.0, -12.0, -23.0, -8.5, 0.2, 11.0, 0.45, 0.12, 0.86, 7.4, cIntWall, 'retained', yMainOff); // Door 2670 from Kitchen EAST into Laundry!
+            mb.addWallWithDoor(-28.0, -12.0, -23.0, -12.0, 0.2, 11.0, 0.45, 0.15, 0.75, 7.6, cIntWall, 'retained', yMainOff);// Door 3070 from Kitchen NORTH into Rear Entry
+
+            // 3. EXISTING LAUNDRY ROOM (X=-23.0 to -14.0, Z=-13.5 to -6.0) -> DOORWAY INTO EXISTING MASTER/REAR BATH (X=-23.5 to -14.0, Z=-21.5 to -13.5):
+            mb.addWallSegment(-23.5, -21.5, -23.5, -12.0, 0.2, 10.6, 0.4, cIntWall, 'retained', yMainOff);             // Wall separating Rear Entry (West) from Laundry & Bath (East)
+            //    - North Wall of Existing Laundry (Z=-13.5, X=-23.5 to -14.0) with Door 2068 connecting directly into Master/Rear Bath! (Sheet A-1.1 & Video 01:12 Frame #19)
+            mb.addWallWithDoor(-23.5, -13.5, -14.0, -13.5, 0.2, 10.6, 0.4, 0.18, 0.48, 7.2, [0.88, 0.83, 0.74, wallAlpha], 'retained', yMainOff);
+            //    - Toilet alcove partition inside Rear Bath (X=-20.8, Z=-21.5 to -13.5 with Door 2068)
+            mb.addWallWithDoor(-20.8, -21.5, -20.8, -13.5, 0.2, 10.6, 0.35, 0.35, 0.68, 7.2, [0.88, 0.83, 0.74, wallAlpha], 'retained', yMainOff);
+            //    - East Wall of Laundry & Rear Bath (X=-14.0, Z=-21.5 to -6.0) with Door 2670 from Rear Bath into All-Season Sunroom (Video 01:24!)
+            mb.addWallWithDoor(-14.0, -21.5, -14.0, -6.0, 0.2, 10.6, 0.45, 0.12, 0.32, 7.4, [0.76, 0.84, 0.76, wallAlpha], 'retained', yMainOff);
+            // 4. North Wall of Existing Primary Bedroom (Z=-12.0, X=-14.0 to +1.0) with Opening 30811MU into All-Season Sunroom
+            mb.addWallWithDoor(-14.0, -12.0, 1.0, -12.0, 0.2, 11.5, 0.45, 0.72, 0.94, 7.8, cIntWall, 'retained', yMainOff);
             if (state.showFurniture) {
-              // Existing Kitchen Cabinets & North-Wall 4-Burner Range beside Exposed Brick Chimney Column (Sheet A-1.1 & Video Frame #17)
-              mb.addBox(-16.0, 0.2, -5.5, -14.2, 3.0, 3.5, [0.72, 0.52, 0.32, 1.0], 'retained', yMainOff, true);  // East oak cabinets
-              mb.addBox(-27.8, 0.2, -5.5, -25.8, 3.0, 2.5, [0.72, 0.52, 0.32, 1.0], 'retained', yMainOff, true);  // West oak cabinets
-              mb.addBox(-20.2, 0.2, -5.8, -16.8, 3.1, -3.6, [0.76, 0.78, 0.80, 1.0], 'retained', yMainOff, true); // 4-burner range on North wall (Sheet A-1.1)
-              // Old Beige Tiled Tub in Rear Bath (Sheet A-1.1 & Video Frame #21)
+              // Existing Kitchen East Oak Cabinets (Z=-4.2 to -0.2), North-Wall 4-Burner Range (X=-20.2..-16.8), West Counters & Refrigerator in NW Extension (Frame #15 & #18)
+              mb.addBox(-16.0, 0.2, -4.2, -14.2, 3.0, -0.2, [0.72, 0.52, 0.32, 1.0], 'retained', yMainOff, true);  // East oak base cabinets
+              mb.addBox(-15.6, 5.2, -4.2, -14.2, 9.2, -0.2, [0.72, 0.52, 0.32, 1.0], 'retained', yMainOff, true);  // East oak wall cabinets (Frame #15)
+              mb.addBox(-20.2, 0.2, -5.8, -16.8, 3.1, -3.6, [0.76, 0.78, 0.80, 1.0], 'retained', yMainOff, true);  // 4-burner gas range on North wall (Frame #15)
+              mb.addBox(-27.8, 0.2, -6.0, -25.8, 3.0, 1.5, [0.72, 0.52, 0.32, 1.0], 'retained', yMainOff, true);   // West counter & dishwasher
+              mb.addBox(-27.8, 0.2, -9.2, -25.2, 6.2, -6.2, [0.74, 0.76, 0.79, 1.0], 'retained', yMainOff, true);  // Stainless Refrigerator in NW Kitchen extension (Frame #18)
+              // Old Beige Tiled Tub in Rear Bath (Sheet A-1.1 & Video Frame #19-#20)
               mb.addBox(-18.5, 0.2, -16.5, -14.3, 2.2, -13.8, [0.92, 0.89, 0.82, 1.0], 'retained', yMainOff, true);
-              // White Wall Shelving in Existing Middle Primary Bedroom (Video Frames #26-#27)
+              // White Wall Shelving in Existing Primary Bedroom (Video Frames #26-#27)
               mb.addBox(-0.6, 2.5, -8.5, 0.8, 7.8, -1.0, cTrimWhite, 'retained', yMainOff, true);
             }
           }
@@ -1320,7 +1336,8 @@
           mb.addWallWithDoor(-41.5, -11, -28, -11, 0.2, 11.5, 0.5, 0.15, 0.85, 8.0, cNewWall, 'new', yMainOff);      // Sunroom / Kitchen wall (French doors M-05, M-06)
           mb.addWallWithDoor(-28, -21.5, -28, -11, 0.2, 11.0, 0.5, 0.35, 0.65, 7.8, cNewWall, 'new', yMainOff);      // Sunroom / Mudroom wall
           mb.addWallWithDoor(-21.5, -21.5, -21.5, -11, 0.2, 11.0, 0.45, 0.35, 0.65, 7.8, cNewWall, 'new', yMainOff); // Mudroom (6'-6"x10') / Laundry (8'x10') divider (Door M-08)
-          mb.addWallWithDoor(-28, -11, -14, -11, 0.2, 11.5, 0.5, 0.12, 0.34, 8.0, cNewWall, 'new', yMainOff);        // Mudroom to Kitchen cased opening (3'-0"x8'-0" C.O.)
+          mb.addWallWithDoor(-28, -11, -21.5, -11, 0.2, 11.5, 0.5, 0.15, 0.62, 8.0, cNewWall, 'new', yMainOff);      // Kitchen to Mudroom cased opening (3'-0"x8'-0" C.O.)
+          mb.addWallWithDoor(-21.5, -11, -14, -11, 0.2, 11.5, 0.5, 0.42, 0.78, 8.0, cNewWall, 'new', yMainOff);      // Laundry to Primary Bath Door M-09 (Sheet A-2.2!)
           mb.addWallSegment(-14, -21.5, -14, -11, 0.2, 11.5, 0.5, cNewWall, 'new', yMainOff);                        // Laundry / Primary Bedroom wall
           mb.addWallWithDoor(-41.5, 6, -28, 6, 0.2, 11.5, 0.5, 0.15, 0.38, 8.0, cNewWall, 'new', yMainOff);          // Kitchen / Scullery wall (Door M-02)
           mb.addWallWithDoor(-28, 6, -28, 16.5, 0.2, 11.5, 0.5, 0.15, 0.42, 8.0, cNewWall, 'new', yMainOff);         // Scullery / Library Bar wall
@@ -1329,7 +1346,8 @@
           // MIDDLE ROOM SPLIT + PLATE / SILVER ROOM (Exact alignment along Z=6.0 and Z=0.0 per Sheet A-2.2 & Video 01:38!):
           // 1. Primary Bedroom South wall (Z=-12, X=-14 to 1) with Door M-10 at East end into Private Primary Hallway (X=-2.5 to 1)
           mb.addWallWithDoor(-14, -12, 1, -12, 0.2, 11.5, 0.5, 0.76, 0.95, 8.0, cNewWall, 'new', yMainOff);
-          // 2. Private Primary Hallway West wall (X=-2.5, Z=-12 to +1.0) separating Hallway from the Two Stacked Walk-In Closets!
+          // 2. Doorway off the North side of Central Hallway (Z=0.0, X=-2.5 to +1.0) into Private Primary Hallway + West wall (X=-2.5, Z=-12 to +1.0) into WICs!
+          mb.addWallWithDoor(-2.5, 0.0, 1.0, 0.0, 0.2, 11.5, 0.45, 0.15, 0.85, 8.0, cNewWall, 'modified', yMainOff);
           mb.addWallWithDoor(-2.5, -12, -2.5, 1.0, 0.2, 11.5, 0.45, 0.18, 0.82, 8.0, cNewWall, 'new', yMainOff);
           // 3. Two Stacked Walk-In Closets (11'-0" x 7'-2" each, X=-10.5 to -2.5, Z=-9.0 to -4.0 and Z=-4.0 to +1.0) + Toilet Room (X=-10.5 to -5.5, Z=-12 to -9)
           mb.addWallSegment(-10.5, -9.0, -2.5, -9.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);
@@ -1426,8 +1444,8 @@
         const cLilacBath  = [0.68, 0.63, 0.78, wallAlpha]; // Lilac/subway-tile Bath 2 walls (Video 02:06)
         const cLimeBed2   = [0.67, 0.76, 0.44, wallAlpha]; // Lime-green Bedroom 2 walls (Video 02:14)
 
-        // 1. South Wall of Central Spine Hallway (Z=6, continuous from X=-2.5 to 44) with French Doors into Dining, Living & Den/Study:
-        mb.addWallWithDoor(-2.5, 6, 3, 6, 0.2, 11.5, 0.5, 0.20, 0.80, 8.2, cDiningSage, 'retained', yMainOff); // Dining Hall French door
+        // 1. South Wall of Central Spine Hallway (Z=6, continuous from X=-2.5 to 44; solid from X=-2.5 to +3.0 per Sheets A-1.1 & A-2.2):
+        mb.addWallSegment(-2.5, 6, 3, 6, 0.2, 11.5, 0.5, cDiningSage, 'retained', yMainOff);
         // Living Room North Wall (X=3 to 30, Z=6) with TWIN 15-lite French doors (5080) flanking the Central Fireplace! (Sheet A-1.1 & Video Frame #04)
         mb.addWallWithDoor(3, 6, 14, 6, 0.2, 11.5, 0.55, 0.32, 0.76, 8.2, cLivingBlue, 'retained', yMainOff);
         mb.addWallSegment(14, 6, 19, 6, 0.2, 11.5, 0.65, cLivingBlue, 'retained', yMainOff);
