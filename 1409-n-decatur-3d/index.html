@@ -522,9 +522,9 @@
       { id: 'audit2', code: 'Issue #2', title: 'Ridge Vent vs. Foamed Deck & Slate vs. Shingle', pos: [5, 21.8, -2], level: 'all', spaceId: 'roof_solar', desc: 'TRS quoted vented ridge strip over unvented open-cell foam roof deck + asphalt shingles instead of permitted slate.' },
       { id: 'audit3', code: 'Issue #3', title: '5 Isolated Unencapsulated Crawl Bays ($0 Quoted)', pos: [14, -5.5, 18], level: 'basement', spaceId: 'crawl_space_bays', desc: '2,200+ SF across 5 isolated crawl pockets lack 20-mil vapor barrier, dehumidification, and access hatches.' },
       { id: 'audit4', code: 'Issue #4', title: 'Sunken Patio Drainage & $0 Waterproofing', pos: [9, -6.5, -23], level: 'basement', spaceId: 'excavated_patio', desc: '25\'-7"×9\'-2" patio sits 8\'-11" below grade outside French doors B-01 with drainage deferred to change order & $0 waterproofing fee.' },
-      { id: 'audit5', code: 'Issue #5', title: '$250k Geothermal Oversized (12T) & Missing ERV', pos: [-9, -4.5, -2], level: 'basement', spaceId: 'basement_digout', desc: 'EcoMech quoted 11.5–12 tons (oversized for 2.5 ACH50 envelope) and omitted contractually required ERV & dehumidifiers.' },
-      { id: 'audit6', code: 'Issue #6', title: '400A SPAN Panel vs. HVAC/Water Heater Mismatch', pos: [-13, -4.5, 2], level: 'basement', spaceId: 'basement_digout', desc: 'Bray wired for 3 exterior AC condensers & 1 water heater (outdated 6/8/2026 plans) instead of 2 HPWHs, ERV, and dehumidifiers.' },
-      { id: 'audit7', code: 'Issue #7', title: 'Cramped 95 SF Utility Room & Resistance WHs', pos: [-9, -4.5, 4], level: 'basement', spaceId: 'basement_digout', desc: '9\'-5"×10\'-2" Utility Room must fit 2 HVAC units, 2 HPWHs, ERV & dehumidifier; adjacent 5\'×6\' Network Closet needs exhaust.' },
+      { id: 'audit5', code: 'Issue #5', title: '$250k Geothermal Oversized (12T) & Missing ERV', pos: [-1.5, -4.5, 0.5], level: 'basement', spaceId: 'basement_digout', desc: 'EcoMech quoted 11.5–12 tons (oversized for 2.5 ACH50 envelope) and omitted contractually required ERV & dehumidifiers.' },
+      { id: 'audit6', code: 'Issue #6', title: '400A SPAN Panel vs. HVAC/Water Heater Mismatch', pos: [-3.5, -4.5, -5.5], level: 'basement', spaceId: 'basement_digout', desc: 'Bray wired for 3 exterior AC condensers & 1 water heater (outdated 6/8/2026 plans) instead of 2 HPWHs, ERV, and dehumidifiers.' },
+      { id: 'audit7', code: 'Issue #7', title: 'Cramped 95 SF Utility Room & Resistance WHs', pos: [-1.5, -4.5, 3.2], level: 'basement', spaceId: 'basement_digout', desc: '9\'-5"×10\'-2" Utility Room must fit 2 HVAC units, 2 HPWHs, ERV & dehumidifier; adjacent 5\'×6\' Network Closet needs exhaust.' },
       { id: 'audit8', code: 'Issue #8', title: '5 Wood Stove Inserts Depressurization Risk', pos: [16, 19, 6], level: 'all', spaceId: 'living_terrace', desc: '5 Buck Stove wood inserts in a tight 2.5 ACH50 house require sealed outside combustion air & interlocked kitchen hood makeup air.' }
     ];
 
@@ -1087,16 +1087,28 @@
           mb.addWallSegment(-41.5, 19.0, -28, 19.0, -3.2, 0.4, 0.95, cBrick, 'new', yBaseOff);
           mb.addWallSegment(-28, 16.5, -28, 19.0, -3.2, 0.4, 0.95, cBrick, 'new', yBaseOff);
 
-          // Interior Basement Partitions (Sheet A-2.1: Game Room | Bonus | Utility/Network | Family | Storage/Powder | Media)
-          mb.addWallWithDoor(-28.5, -11, -28.5, 6, -8.4, -0.8, 0.5, 0.35, 0.65, 7.2, cNewWall, 'new', yBaseOff); // Game / Bonus cased opening
-          mb.addWallSegment(-6, -11, -6, 6, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                         // Bonus / Utility & Network wall
-          mb.addWallWithDoor(3.5, -11, 3.5, 6, -8.4, -0.8, 0.5, 0.15, 0.35, 7.0, cNewWall, 'new', yBaseOff);     // Utility / Family wall (Door B-05)
-          mb.addWallSegment(-6, -4.5, 3.5, -4.5, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                    // Network Closet (5x6) / Utility (9'-5"x10'-2")
-          mb.addWallWithDoor(21, -11, 21, 6, -8.4, -0.8, 0.5, 0.08, 0.28, 7.0, cNewWall, 'new', yBaseOff);       // Family / Media & Powder wall (Door B-02)
-          mb.addWallSegment(26, -8, 26, 4, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                          // Storage (5x3) & Powder (5x6) East wall
-          mb.addWallSegment(21, -3, 26, -3, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                         // Storage / Powder divider
-          mb.addWallSegment(21, -8, 26, -8, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                         // Storage North wall
-          mb.addWallSegment(21, 4, 26, 4, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                           // Powder South wall
+          // Interior Basement Partitions (Exact match to Sheet A-2.1: Game Room | Bonus | Network B-07 & Utility B-05 | Family B-06 | Storage B-03 & Powder B-04 | Media B-02)
+          mb.addWallWithDoor(-28.5, -11, -28.5, 6, -8.4, -0.8, 0.5, 0.22, 0.78, 7.4, cNewWall, 'new', yBaseOff); // Game / Bonus wide cased opening
+          // North Corridor (Z=-11.0 to -7.8, X=-6.0 to +3.5) connecting Bonus Room to Family Room via Door B-06:
+          mb.addWallSegment(-6.0, -7.8, -6.0, 6.0, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                  // West wall of Network Closet & Utility Room (open at Z=-11..-7.8!)
+          mb.addWallWithDoor(-6.0, -7.8, -1.0, -7.8, -8.4, -0.8, 0.45, 0.12, 0.88, 7.0, cNewWall, 'new', yBaseOff); // Network Closet (5'-0"x6'-0") North wall w/ double Door B-07
+          mb.addWallSegment(-1.0, -7.8, -1.0, -3.0, -8.4, -0.8, 0.45, cNewWall, 'new', yBaseOff);                // Network Closet East wall
+          mb.addWallSegment(-6.0, -3.0, 3.5, -3.0, -8.4, -0.8, 0.45, cNewWall, 'new', yBaseOff);                 // Divider between Network Closet & Utility Room (9'-5"x10'-2")
+          mb.addWallWithDoor(3.5, -11.0, 3.5, -3.0, -8.4, -0.8, 0.5, 0.06, 0.38, 7.2, cNewWall, 'new', yBaseOff);// Door B-06 connecting Bonus/North Hall to Family Room!
+          mb.addWallWithDoor(3.5, -3.0, 3.5, 6.0, -8.4, -0.8, 0.5, 0.08, 0.38, 7.0, cNewWall, 'new', yBaseOff);  // Door B-05 into Utility Room (9'-5"x10'-2")
+          // East Family Room to Media Room Passage (Z=-11.0 to -7.5, X=21.0 to 26.0), Storage (5'x3'-6") & Powder Room (5'x6'):
+          mb.addWallWithDoor(26.0, -11.0, 26.0, -7.5, -8.4, -0.8, 0.5, 0.10, 0.90, 7.2, cNewWall, 'new', yBaseOff); // Door B-02 at East end of passage into Media Room!
+          mb.addWallWithDoor(21.0, -7.5, 26.0, -7.5, -8.4, -0.8, 0.45, 0.16, 0.84, 7.0, cNewWall, 'new', yBaseOff); // Storage North wall w/ Door B-03
+          mb.addWallSegment(21.0, -7.5, 21.0, -3.5, -8.4, -0.8, 0.45, cNewWall, 'new', yBaseOff);                // Storage West wall
+          mb.addWallSegment(21.0, -3.5, 26.0, -3.5, -8.4, -0.8, 0.45, cNewWall, 'new', yBaseOff);                // Storage / Powder divider
+          mb.addWallWithDoor(21.0, -3.5, 21.0, 4.0, -8.4, -0.8, 0.5, 0.12, 0.52, 7.0, cNewWall, 'new', yBaseOff);// Powder West wall w/ Door B-04 from Family Room
+          mb.addWallSegment(26.0, -7.5, 26.0, 4.0, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                  // Storage & Powder East wall (shared w/ Media Room)
+          mb.addWallSegment(21.0, 4.0, 26.0, 4.0, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);                   // Powder South wall
+          mb.addWallSegment(21.0, 4.0, 21.0, 6.0, -8.4, -0.8, 0.5, cNewWall, 'new', yBaseOff);
+          // Masonry Fireplace Foundations in Front Crawl Space (Sheet A-2.1 dashed masonry piers — outside finished basement rooms!):
+          mb.addBox(-15.5, -5.2, 10.0, -12.5, 0.0, 14.5, cBrick, 'retained', yBaseOff, true);                    // Dining / Library fireplace foundation pier
+          mb.addBox(12.5, -5.2, 6.8, 20.5, 0.0, 9.8, cBrick, 'retained', yBaseOff, true);                        // Living Room fireplace foundation pier
+          mb.addBox(30.0, -5.2, 11.0, 32.8, 0.0, 15.4, cBrick, 'retained', yBaseOff, true);                      // Parlor Study fireplace foundation pier
 
           // Two Egress Window Wells on West Wall of Game Room (Sheet A-2.1 & A-2.6)
           mb.addBox(-45.0, -6.5, -7.5, -41.5, -1.5, -3.5, cBrick, 'new', yBaseOff, true);
@@ -1301,14 +1313,17 @@
         // PLANNED WEST & REAR ADDITION + PRIMARY SUITE SPLIT (Sheet A-2.2 & A-2.0 Renders)
         // ====================================================================
         if (isPlanned) {
-          // Planned Floor Finishes: Checkerboard Tile in Sunroom/Mudroom/Laundry, Oak in Kitchen/Scullery/Primary Bed, Marble in Primary Bath
+          // Planned Floor Finishes: Checkerboard Tile in Sunroom/Mudroom/Laundry, Oak in Kitchen/Scullery/Primary Bed, Marble in Primary Bath & Shower
           mb.addBox(-41.5, -0.2, -27.5, -28, 0.22, -11, cChecker, 'new', yMainOff, true);     // New Sunroom (12'-0" x 16'-4")
           mb.addBox(-28, -0.2, -21.5, -14, 0.22, -11, cChecker, 'modified', yMainOff, true);  // Recessed Mudroom & Laundry
-          mb.addBox(-41.5, -0.2, -11, -18.5, 0.22, 6, cOak, 'new', yMainOff, true);           // Expanded Kitchen (18'-8" x 23'-6")
+          mb.addBox(-41.5, -0.2, -11, -18.5, 0.22, 6, cOak, 'new', yMainOff, false);          // Expanded Kitchen (18'-8" x 23'-6")
           mb.addBox(-41.5, -0.2, 6, -28, 0.22, 19.0, cOak, 'new', yMainOff, true);            // Scullery (12'-0" x 13'-4")
-          mb.addBox(-14, -0.2, -27.5, 1, 0.22, -12, cOak, 'new', yMainOff, true);             // Primary Bedroom (14'-11" x 16'-1")
-          mb.addBox(-18.5, -0.2, -12, -10.5, 0.24, 1.0, cMarble, 'modified', yMainOff, true); // Primary Bath (8'-0" x 18'-0")
-          mb.addBox(-10.5, -0.2, -12, -2.5, 0.23, 1.0, cOak, 'modified', yMainOff, true);     // Dual Walk-In Closets (11'-0" x 7'-2" each)
+          mb.addBox(-14, -0.2, -27.5, 1, 0.22, -11, cOak, 'new', yMainOff, true);             // Primary Bedroom (14'-11" x 16'-1")
+          mb.addBox(-18.5, -0.2, -11, -10.5, 0.24, 1.0, cMarble, 'modified', yMainOff, false);// Primary Bath (8'-0" x 18'-0")
+          mb.addBox(-23.0, -0.2, -5.5, -18.5, 0.24, -0.3, cMarble, 'new', yMainOff, false);   // Primary Bath Walk-In Shower Alcove (5'-0" x 5'-1.5")
+          mb.addBox(-10.5, -0.2, -11, -7.5, 0.24, -8.0, cMarble, 'modified', yMainOff, false);// Primary Bath NE Alcove outside Toilet Room
+          mb.addBox(-7.5, -0.2, -11, -2.5, 0.24, -8.0, cMarble, 'new', yMainOff, false);      // Enclosed Toilet Room (5'-0" x 3'-0")
+          mb.addBox(-10.5, -0.2, -8.0, -2.5, 0.23, 1.0, cOak, 'modified', yMainOff, false);   // Dual Walk-In Closets (11'-0" x 7'-2" each)
 
           // Addition Exterior Board-and-Batten & Brick Walls (Sheets A-2.0, A-2.2, A-2.5, A-2.6 — starting at Y=0.0 so zero gap above foundation!)
           mb.addWallSegment(-41.5, -27.5, -41.5, 19.0, 0.0, 11.96, 0.85, cAdditionSiding, 'new', yMainOff); // West addition wall
@@ -1332,57 +1347,84 @@
           mb.addWallSegment(-39.5, 22.8, -28.0, 22.8, -2.75, 2.8, 0.25, cBrick, 'new', yMainOff);           // South brick cheek wall + iron rail (open at West X=-39.5!)
           mb.addWallSegment(-28.0, 16.5, -28.0, 22.8, -2.75, 2.8, 0.25, cBrick, 'new', yMainOff);           // East brick cheek wall
 
-          // Sunroom, Kitchen & Primary Bedroom Window Bands (Sheets A-2.0, A-2.2, A-2.6)
-          mb.addBox(-42.0, 2.5, -25.5, -41.0, 8.8, -13.0, cGlass, 'new', yMainOff, true);
-          mb.addBox(-39.5, 2.5, -28.0, -30.0, 8.8, -27.0, cGlass, 'new', yMainOff, true);
-          mb.addBox(-42.0, 3.2, -8.5, -41.0, 8.8, -4.5, cGlass, 'new', yMainOff, true); // Kitchen window N of range
-          mb.addBox(-42.0, 3.2, 0.5, -41.0, 8.8, 4.5, cGlass, 'new', yMainOff, true);   // Kitchen window S of range
+          // Sunroom, Kitchen, Scullery, Laundry & Primary Bedroom Window Bands (Sheets A-2.0, A-2.2, A-2.6)
+          mb.addBox(-42.0, 2.5, -25.5, -41.0, 8.8, -13.0, cGlass, 'new', yMainOff, true); // Sunroom West windows
+          mb.addBox(-39.5, 2.5, -28.0, -30.0, 8.8, -27.0, cGlass, 'new', yMainOff, true); // Sunroom North windows
+          mb.addBox(-28.5, 2.5, -26.2, -27.5, 8.8, -22.8, cGlass, 'new', yMainOff, true); // Sunroom East window (Tag D)
+          mb.addBox(-20.8, 3.2, -22.0, -16.2, 8.6, -21.0, cGlass, 'new', yMainOff, true); // Laundry North twin windows (Tag D)
+          mb.addBox(-42.0, 3.2, -8.5, -41.0, 8.8, -4.5, cGlass, 'new', yMainOff, true);   // Kitchen window N of range (Tag C)
+          mb.addBox(-42.0, 3.2, 0.5, -41.0, 8.8, 4.5, cGlass, 'new', yMainOff, true);     // Kitchen window S of range (Tag C)
+          mb.addBox(-42.0, 3.2, 10.5, -41.0, 8.6, 14.2, cGlass, 'new', yMainOff, true);   // Scullery West window over sink (Tag B)
+          mb.addBox(-38.8, 2.6, 18.5, -35.0, 8.6, 19.5, cGlass, 'new', yMainOff, true);   // Scullery South front window (Tag A)
           for (const sx of [-11.8, -8.3, -4.8, -1.3]) {
             mb.addBox(sx - 1.2, 2.0, -28.0, sx + 1.2, 8.6, -27.0, cGlass, 'retained', yMainOff, true);
           }
 
-          // Planned Interior Partitions on Main Floor (Exact match to Sheet A-2.2 & Video 01:38!):
+          // Planned Interior Partitions on Main Floor (Exact match to Zoomed Sheet A-2.2!):
           mb.addWallWithDoor(-41.5, -11, -28, -11, 0.2, 11.5, 0.5, 0.15, 0.85, 8.0, cNewWall, 'new', yMainOff);      // Sunroom / Kitchen wall (French doors M-05, M-06)
           mb.addWallWithDoor(-28, -21.5, -28, -11, 0.2, 11.0, 0.5, 0.35, 0.65, 7.8, cNewWall, 'new', yMainOff);      // Sunroom / Mudroom wall
           mb.addWallWithDoor(-21.5, -21.5, -21.5, -11, 0.2, 11.0, 0.45, 0.35, 0.65, 7.8, cNewWall, 'new', yMainOff); // Mudroom (6'-6"x10') / Laundry (8'x10') divider (Door M-08)
           mb.addWallWithDoor(-28, -11, -21.5, -11, 0.2, 11.5, 0.5, 0.15, 0.62, 8.0, cNewWall, 'new', yMainOff);      // Kitchen to Mudroom cased opening (3'-0"x8'-0" C.O.)
-          mb.addWallWithDoor(-21.5, -11, -14, -11, 0.2, 11.5, 0.5, 0.42, 0.78, 8.0, cNewWall, 'new', yMainOff);      // Laundry to Primary Bath Door M-09 (Sheet A-2.2!)
+          mb.addWallWithDoor(-21.5, -11, -14, -11, 0.2, 11.5, 0.5, 0.58, 0.92, 8.0, cNewWall, 'new', yMainOff);      // Laundry to Primary Bath Door M-09 (Sheet A-2.2!)
           mb.addWallSegment(-14, -21.5, -14, -11, 0.2, 11.5, 0.5, cNewWall, 'new', yMainOff);                        // Laundry / Primary Bedroom wall
-          mb.addWallWithDoor(-41.5, 6, -28, 6, 0.2, 11.5, 0.5, 0.15, 0.38, 8.0, cNewWall, 'new', yMainOff);          // Kitchen / Scullery wall (Door M-02)
+          mb.addWallWithDoor(-41.5, 6, -28, 6, 0.2, 11.5, 0.5, 0.08, 0.30, 8.0, cNewWall, 'new', yMainOff);          // Kitchen / Scullery wall (Door M-02 at West end)
           mb.addWallWithDoor(-28, 6, -28, 16.5, 0.2, 11.5, 0.5, 0.15, 0.42, 8.0, cNewWall, 'new', yMainOff);         // Scullery / Library Bar wall
-          mb.addWallWithDoor(-28, 6, -14, 6, 0.2, 11.5, 0.5, 0.48, 0.74, 8.0, cNewWall, 'modified', yMainOff);       // Kitchen / Library Bar door (M-03)
+          mb.addWallWithDoor(-28, 6, -14, 6, 0.2, 11.5, 0.5, 0.40, 0.64, 8.0, cNewWall, 'modified', yMainOff);       // Kitchen / Library Bar door (M-03)
 
-          // MIDDLE ROOM SPLIT + PLATE / SILVER ROOM (Exact alignment along Z=6.0 and Z=0.0 per Sheet A-2.2 & Video 01:38!):
-          // 1. Primary Bedroom South wall (Z=-12, X=-14 to 1) with Door M-10 at East end into Private Primary Hallway (X=-2.5 to 1)
-          mb.addWallWithDoor(-14, -12, 1, -12, 0.2, 11.5, 0.5, 0.76, 0.95, 8.0, cNewWall, 'new', yMainOff);
-          // 2. Doorway off the North side of Central Hallway (Z=0.0, X=-2.5 to +1.0) into Private Primary Hallway + West wall (X=-2.5, Z=-12 to +1.0) into WICs!
+          // PRIMARY SUITE + PRIMARY BATH + WALK-IN SHOWER + 2 WALK-IN CLOSETS + PLATE / SILVER ROOM (Exact match to Zoomed Sheet A-2.2!):
+          // 1. Primary Bedroom South wall (Z=-11.0, X=-14.0 to -2.5):
+          //    - Door M-10 (X=-12.8..-10.0) opens directly from Primary Bedroom into Primary Bath!
+          //    - At the East end (X=-2.5 to +1.0), the 3'-2.5" Private Primary Hallway opens directly into Primary Bedroom!
+          mb.addWallWithDoor(-14.0, -11.0, -2.5, -11.0, 0.2, 11.5, 0.5, 0.10, 0.35, 8.0, cNewWall, 'new', yMainOff); // Door M-10 into Primary Bath!
+          // 2. Private Primary Hallway (3'-2.5" wide, X=-2.5 to +1.0, Z=-11.0 to 0.0):
+          //    - Door EXIST./RELOC. at South end (Z=0.0, X=-2.5 to +1.0) off the Central Hallway!
+          //    - Solid West wall at X=-2.5 (Z=-11.0 to +1.0) backing the Toilet Room and both Walk-In Closets!
           mb.addWallWithDoor(-2.5, 0.0, 1.0, 0.0, 0.2, 11.5, 0.45, 0.15, 0.85, 8.0, cNewWall, 'modified', yMainOff);
-          mb.addWallWithDoor(-2.5, -12, -2.5, 1.0, 0.2, 11.5, 0.45, 0.18, 0.82, 8.0, cNewWall, 'new', yMainOff);
-          // 3. Two Stacked Walk-In Closets (11'-0" x 7'-2" each, X=-10.5 to -2.5, Z=-9.0 to -4.0 and Z=-4.0 to +1.0) + Toilet Room (X=-10.5 to -5.5, Z=-12 to -9)
-          mb.addWallSegment(-10.5, -9.0, -2.5, -9.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);
-          mb.addWallSegment(-5.5, -12.0, -5.5, -9.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);
-          mb.addWallSegment(-10.5, -4.0, -2.5, -4.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);
-          mb.addWallWithDoor(-10.5, -12, -10.5, 1.0, 0.2, 11.5, 0.45, 0.25, 0.78, 8.0, cNewWall, 'new', yMainOff); // Wall between Primary Bath & WICs
-          // 4. Primary Bath West wall (X=-18.5, Z=-11 to +1.0) & Beverage/Coffee Station alcove (X=-20.5 to -18.5, Z=-11 to -3.5)
-          mb.addWallSegment(-18.5, -11, -18.5, 1.0, 0.2, 11.5, 0.5, cNewWall, 'new', yMainOff);
-          mb.addWallSegment(-18.5, 1.0, -2.5, 1.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff); // North wall of Plate/Silver Room & Kitchen Fridge wall
-          // 5. Plate / Silver Room (10'-11" x 5'-0", X=-14.0 to -2.5, Z=1.0 to 6.0 — flush with Dining North wall at Z=6.0!)
-          mb.addWallWithDoor(-14.0, 1.0, -14.0, 6.0, 0.2, 11.5, 0.45, 0.22, 0.78, 8.0, cNewWall, 'new', yMainOff);   // West 2'-6"x8'-0" C.O. to Kitchen/Library
+          mb.addWallSegment(-2.5, -11.0, -2.5, 1.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);
+          // 3. Enclosed Toilet Room (5'-0" x 3'-0", X=-7.5 to -2.5, Z=-11.0 to -8.0) with Door on West wall (X=-7.5) from Primary Bath NE alcove:
+          mb.addWallWithDoor(-7.5, -11.0, -7.5, -8.0, 0.2, 11.5, 0.4, 0.12, 0.88, 7.6, cNewWall, 'new', yMainOff);   // Toilet Room West door
+          mb.addWallSegment(-10.5, -8.0, -2.5, -8.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);                    // South wall of Toilet Room / North wall of WIC #1
+          // 4. Two Stacked Walk-In Closets (11'-0" x 7'-2" each, X=-10.5 to -2.5, Z=-8.0 to -3.5 and Z=-3.5 to +1.0):
+          //    - Both WIC doors open WEST (at X=-10.5) into Primary Bath, flanking the Freestanding Soaking Tub!
+          mb.addWallSegment(-10.5, -3.5, -2.5, -3.5, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);                    // Divider between North WIC & South WIC
+          mb.addWallWithDoor(-10.5, -8.0, -10.5, -3.5, 0.2, 11.5, 0.45, 0.06, 0.56, 7.8, cNewWall, 'new', yMainOff); // North WIC Door from Primary Bath
+          mb.addWallWithDoor(-10.5, -3.5, -10.5, 1.0, 0.2, 11.5, 0.45, 0.44, 0.94, 7.8, cNewWall, 'new', yMainOff);  // South WIC Door from Primary Bath
+          // 5. Primary Bath West Wall (X=-18.5, Z=-11.0 to +1.0) & Projecting 5'-0"x5'-1.5" Walk-In Shower Alcove (X=-23.0 to -18.5, Z=-5.5 to -0.3):
+          mb.addWallSegment(-18.5, -11.0, -18.5, -5.5, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);                  // West wall behind North Vanity & Coffee Station
+          mb.addWallSegment(-20.8, -11.0, -20.8, -5.5, 0.2, 11.5, 0.35, cNewWall, 'new', yMainOff);                  // Back of recessed Bev/Coffee/Fridge Station
+          mb.addWallSegment(-23.0, -5.5, -18.5, -5.5, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);                   // Walk-In Shower North wall
+          mb.addWallSegment(-23.0, -5.5, -23.0, -0.3, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);                   // Walk-In Shower West wall
+          mb.addWallSegment(-23.0, -0.3, -18.5, -0.3, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);                   // Walk-In Shower South wall
+          mb.addWallSegment(-18.5, -0.3, -18.5, 1.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);                    // West wall behind South Vanity
+          mb.addWallSegment(-18.5, 1.0, -2.5, 1.0, 0.2, 11.5, 0.45, cNewWall, 'new', yMainOff);                      // South wall of Primary Bath & South WIC
+          // 6. Plate / Silver Room (10'-11" x 5'-0", X=-14.0 to -2.5, Z=1.0 to 6.0 — flush with Dining North wall at Z=6.0!):
+          mb.addWallWithDoor(-14.0, 1.0, -14.0, 6.0, 0.2, 11.5, 0.45, 0.22, 0.78, 8.0, cNewWall, 'new', yMainOff);   // West 2'-6"x8'-0" C.O. to Kitchen/Library vestibule
           mb.addWallWithDoor(-2.5, 1.0, -2.5, 6.0, 0.2, 11.5, 0.45, 0.22, 0.78, 8.0, cNewWall, 'new', yMainOff);     // East 2'-6"x8'-0" C.O. to Central Hallway
-          mb.addWallWithDoor(-14.0, 6.0, -2.5, 6.0, 0.2, 11.5, 0.5, 0.22, 0.52, 8.0, cNewWall, 'modified', yMainOff);// South wall to Dining Room (Door M-04)
+          mb.addWallWithDoor(-14.0, 6.0, -2.5, 6.0, 0.2, 11.5, 0.5, 0.18, 0.44, 8.0, cNewWall, 'modified', yMainOff);// South wall to Dining Room (Door M-04)
 
           if (state.showFurniture) {
-            // Kitchen 64"x120" Curved Oak Island + Soapstone Top + Range/Hood + Bev/Coffee Station (Sheet A-2.2)
+            // Kitchen 64"x120" Curved Oak Island + Soapstone Top + Range/Hood + Fridge + Bev/Coffee Station (Sheet A-2.2)
             mb.addBox(-36.0, 0.2, -6.5, -30.6, 3.1, 3.5, cOak, 'new', yMainOff, true);
             mb.addBox(-36.3, 3.1, -6.8, -30.3, 3.35, 3.8, [0.18, 0.21, 0.23, 1.0], 'new', yMainOff, true);
             mb.addBox(-41.0, 0.2, -10.2, -38.8, 3.1, 5.2, [0.58, 0.66, 0.58, 1.0], 'new', yMainOff, true);
             mb.addBox(-41.0, 6.2, -3.8, -39.0, 10.5, 0.2, [0.26, 0.27, 0.29, 1.0], 'new', yMainOff, true);
-            mb.addBox(-20.5, 0.2, -10.5, -18.6, 7.8, -3.5, cOak, 'new', yMainOff, true); // Beverage Fridge / Coffee Station
+            mb.addBox(-38.0, 0.2, 4.0, -29.2, 7.8, 5.8, cOak, 'new', yMainOff, true);       // South Kitchen Fridge & Pantry wall
+            mb.addBox(-20.6, 0.2, -10.8, -18.7, 7.8, -5.6, cOak, 'new', yMainOff, true);    // Beverage Fridge / Coffee Station
             // Library / Snug Bar Deep Green Built-In Bar & Bookcases (X=-27.8 to -25.5, Z=7 to 15.5)
             mb.addBox(-27.6, 0.2, 7.0, -25.4, 9.5, 15.5, [0.12, 0.38, 0.30, 1.0], 'modified', yMainOff, true);
-            // Primary Bath Freestanding Tub, Arched Shower & Dual Stained Vanities (Sheet A-2.2)
-            mb.addBox(-17.8, 0.2, -5.8, -15.2, 2.4, -0.5, [0.97, 0.97, 0.99, 1.0], 'new', yMainOff, true);
-            mb.addBox(-13.0, 0.2, -8.5, -10.7, 3.0, 0.5, [0.52, 0.38, 0.26, 1.0], 'new', yMainOff, true);
+            // Primary Bath Fixtures (Exact match to Sheet A-2.2!):
+            //   - Dual Stained Vanities on West wall (North Vanity Z=-10.8..-5.8, South Vanity Z=-0.2..+0.8)
+            mb.addBox(-18.3, 0.2, -10.8, -16.3, 3.0, -5.8, [0.52, 0.38, 0.26, 1.0], 'new', yMainOff, true);
+            mb.addBox(-18.3, 0.2, -0.2, -16.3, 3.0, 0.8, [0.52, 0.38, 0.26, 1.0], 'new', yMainOff, true);
+            //   - Frameless Glass Shower Enclosure across East side of 5'x5'-1.5" Walk-In Shower (X=-18.5, Z=-5.5..-0.3)
+            mb.addBox(-18.6, 0.2, -5.4, -18.3, 8.2, -0.4, cGlass, 'new', yMainOff, true);
+            //   - Freestanding Oval Soaking Tub centered along East wall (X=-13.2..-10.8, Z=-5.5..-1.2)
+            mb.addBox(-13.2, 0.2, -5.5, -10.8, 2.4, -1.2, [0.97, 0.97, 0.99, 1.0], 'new', yMainOff, true);
+            //   - Toilet inside Enclosed Toilet Room (X=-5.2..-3.0, Z=-10.5..-8.6)
+            mb.addBox(-5.2, 0.2, -10.5, -3.0, 2.4, -8.6, cTrimWhite, 'new', yMainOff, true);
+            //   - Plate / Silver Room Built-in Cabinetry (X=-13.5..-3.0 along Z=1.2..2.2 and X=-9.0..-3.0 along Z=4.8..5.8)
+            mb.addBox(-13.5, 0.2, 1.2, -3.0, 8.5, 2.1, cOak, 'new', yMainOff, true);
+            mb.addBox(-9.0, 0.2, 4.9, -3.0, 8.5, 5.8, cOak, 'new', yMainOff, true);
           }
         }
 
@@ -1470,8 +1512,8 @@
         mb.addWallWithDoor(-10.5, 19.5, 3, 19.5, 0.2, 11.5, 0.55, 0.28, 0.72, 8.2, cDiningSage, 'retained', yMainOff);
         // Wide 8'-0" Cased Opening (8080) between Living Room & Dining Room at X=3 (Z=6 to 19.5, Sheet A-1.1 & Video Frame #06)
         mb.addWallWithDoor(3, 6, 3, 19.5, 0.2, 11.5, 0.55, 0.28, 0.78, 8.5, cLivingBlue, 'retained', yMainOff);
-        // Partition between Dining Room & Breakfast Room / Library Bar at X=-14 (Z=6 to 16.5, Sheet A-1.1 & A-2.2) with Door at North end (Z=8.5..11.2)
-        mb.addWallWithDoor(-14, 6, -14, 16.5, 0.2, 11.5, 0.5, 0.22, 0.48, 7.8, cDiningSage, 'retained', yMainOff);
+        // Partition between Dining Room & Breakfast Room / Library Bar at X=-14 (Z=6 to 16.5, Sheet A-1.1 & A-2.2) with Door 2680 at North end (Z=6.3..8.9)
+        mb.addWallWithDoor(-14, 6, -14, 16.5, 0.2, 11.5, 0.5, 0.04, 0.28, 7.8, cDiningSage, 'retained', yMainOff);
         // Solid Interior Wall between Living Room & Hunter-Green Den/Study at X=30 (Z=6 to 20.5, Sheet A-1.1 & A-2.2 — Study is entered from North Entry!)
         mb.addWallSegment(30, 6, 30, 20.5, 0.2, 11.5, 0.55, cStudyGreen, 'retained', yMainOff);
 
@@ -1501,9 +1543,9 @@
         } else {
           mb.addWallSegment(1, -14, 1, 0, 0.2, 11.5, 0.5, cNewWall, 'modified', yMainOff);                       // Planned: solid wall separating Primary Hall from Bath 1 & WIC
         }
-        mb.addWallWithDoor(7, -14, 7, -6.5, 0.2, 11.5, 0.45, 0.15, 0.48, 7.6, cIntWall, 'modified', yMainOff);   // East wall of Bath 1 into Bed 1 (Door M-12)
-        mb.addWallWithDoor(7, -6.5, 7, -2.2, 0.2, 11.5, 0.45, 0.18, 0.76, 7.6, cIntWall, 'modified', yMainOff);  // East wall of Walk-In Closet into Bed 1 (Door M-13)
-        mb.addWallSegment(1, -6.5, 7, -6.5, 0.2, 11.5, 0.45, cIntWall, 'modified', yMainOff);                    // Divider between Bath 1 & WIC
+        mb.addWallWithDoor(7, -14, 7, -6.5, 0.2, 11.5, 0.45, 0.15, 0.48, 7.6, cIntWall, 'modified', yMainOff);   // East wall of Bath 1 into Bed 1
+        mb.addWallWithDoor(7, -6.5, 7, -2.2, 0.2, 11.5, 0.45, 0.18, 0.76, 7.6, cIntWall, 'modified', yMainOff);  // East wall of Walk-In Closet into Bed 1
+        mb.addWallSegment(1, -6.5, 7, -6.5, 0.2, 11.5, 0.45, cIntWall, 'modified', yMainOff);                    // Divider between Bath 1 Shower & WIC
         // Lilac/Subway-Tile Bath 2 (5'-11" x 8'-4", X=21 to 27, Z=-14 to -4.5, Video Frames #32-#34)
         if (isAsBuilt) {
           mb.addWallWithDoor(21, -14, 21, -4.5, 0.2, 11.5, 0.45, 0.45, 0.75, 7.6, cLilacBath, 'retained', yMainOff); // As-Built West Jack-and-Jill door from Bed 1
@@ -1518,17 +1560,41 @@
         mb.addWallWithDoor(27, -4.5, 27, 0, 0.2, 11.5, 0.45, 0.25, 0.75, 7.6, cLimeBed2, 'retained', yMainOff); // Bed 2 Closet door
         mb.addWallWithDoor(21, 0, 24, 0, 0.2, 11.5, 0.5, 0.22, 0.78, 7.6, cIntWall, 'retained', yMainOff);      // Powder Room door 2070 opening South into Hall!
         mb.addWallSegment(24, 0, 27, 0, 0.2, 11.5, 0.5, cIntWall, 'retained', yMainOff);
+        if (state.showFurniture) {
+          // Bath 1 Vanity, Toilet & 6'-0"x3'-0" Shower w/ Glass Enclosure (Sheets A-1.1 & A-2.2)
+          mb.addBox(1.3, 0.2, -13.7, 3.0, 2.9, -11.4, cTrimWhite, 'retained', yMainOff, true);
+          mb.addBox(1.3, 0.2, -10.8, 3.1, 2.4, -9.2, cTrimWhite, 'retained', yMainOff, true);
+          mb.addBox(1.3, 0.2, -8.5, 6.7, 0.5, -6.6, cMarble, 'modified', yMainOff, true);
+          mb.addBox(1.3, 0.5, -8.5, 6.7, 7.8, -8.3, cGlass, 'modified', yMainOff, true);
+          // Bath 2 Vanity, Toilet & Tub/Shower (Sheets A-1.1 & A-2.2)
+          mb.addBox(21.3, 0.2, -13.7, 23.2, 2.9, -11.4, cTrimWhite, 'retained', yMainOff, true);
+          mb.addBox(21.3, 0.2, -10.8, 23.1, 2.4, -9.2, cTrimWhite, 'retained', yMainOff, true);
+          mb.addBox(21.3, 0.2, -7.2, 26.7, 2.3, -4.7, cTrimWhite, 'retained', yMainOff, true);
+          // North-Hall Powder Room Toilet & Pedestal Sink
+          mb.addBox(21.3, 0.2, -4.2, 23.0, 2.4, -2.6, cTrimWhite, 'retained', yMainOff, true);
+        }
         // Bedroom 2 South Wall (X=27 to 39, Z=0) with Door 3071 into Hall/Entry Vestibule (Sheet A-1.1 & Video Frame #36)
         mb.addWallWithDoor(27, 0, 39, 0, 0.2, 11.5, 0.5, 0.12, 0.36, 7.8, cLimeBed2, 'retained', yMainOff);
         mb.addWallSegment(39, 0, 44, 0, 0.2, 11.96, 0.85, cBrick, 'retained', yMainOff); // North wall of exterior Court
 
-        // 5. ALL 5 INTERIOR FIREPLACES & EXPOSED KITCHEN BRICK FLUE (Exact locations from Sheets A-1.1, A-2.2 & Video Frames #04, #08, #14, #17, #35, #40!):
-        mb.addFireplace(16.5, 6.9, 0.2, 0, 1, cTrimWhite, cBrick, 'retained', yMainOff);                 // FP #1: Living Room North Wall Fireplace (Frame #04)
-        mb.addFireplace(-12.6, 13.5, 0.2, 1, 0, cTrimWhite, cMarble, 'retained', yMainOff);              // FP #2: Dining Room White-Tiled West/Corner Fireplace (Frame #08)
-        mb.addFireplace(-15.2, 13.5, 0.2, -1, 0, cTrimWhite, cBrick, 'retained', yMainOff);              // FP #3: Breakfast / Library Bar East Wall Fireplace (sharing chimney at X=-14, Z=13.5! Frame #14)
-        mb.addBox(-15.8, 0.2, -6.0, -14.0, 11.5, -4.2, cBrick, 'retained', yMainOff, true);              // Exposed Red-Brick Chimney Column at NE corner of Existing Kitchen (Sheet A-1.1 & Frame #17)
-        mb.addFireplace(35.5, -13.1, 0.2, 0, 1, cTrimWhite, cBrick, 'retained', yMainOff);               // FP #4: Bedroom 2 North Wall White Fireplace (Frame #35)
-        mb.addFireplace(31.0, 13.2, 0.2, 1, 0, cBrick, [0.46, 0.18, 0.22, 1.0], 'retained', yMainOff);   // FP #5: Hunter-Green Den/Study West Wall Red-Brick Fireplace (Frame #40)
+        // 5. INTERIOR FIREPLACES & UPPER CHIMNEY BREASTS (Flush on room sides so NO chimney blocks the Central Hallway or Primary Bath!):
+        //    - FP #1: Living Room North Wall Fireplace (X=16.5, Z=6.9 — projects South into Living Room; Central Hallway Z=0..6 is 100% clear!)
+        mb.addFireplace(16.5, 6.9, 0.2, 0, 1, cTrimWhite, cBrick, 'retained', yMainOff);
+        mb.addBox(14.3, 4.65, 6.1, 18.7, 11.5, 7.7, cLivingBlue, 'retained', yMainOff, true);
+        //    - FP #2 & FP #3: Shared Dining Room & Breakfast/Library Bar Fireplaces (centered at Z=12.2, South of Door 2680 at Z=6.3..8.9!)
+        mb.addFireplace(-12.6, 12.2, 0.2, 1, 0, cTrimWhite, cMarble, 'retained', yMainOff);
+        mb.addFireplace(-15.2, 12.2, 0.2, -1, 0, cTrimWhite, cBrick, 'retained', yMainOff);
+        mb.addBox(-15.4, 4.65, 9.9, -12.4, 11.5, 14.5, cDiningSage, 'retained', yMainOff, true);
+        //    - Exposed Red-Brick Chimney Column at NE corner of Existing Kitchen (Sheet A-1.1 & Frame #17 — DEMOLISHED in Planned Primary Bath!)
+        if (isAsBuilt || showGhost) {
+          mb.addBox(-15.8, 0.2, -6.0, -14.0, 11.5, -4.2, isAsBuilt ? cBrick : cGhostRed, isAsBuilt ? 'retained' : 'demo', yMainOff, true);
+        }
+        //    - FP #4: Bedroom 2 North Wall White Fireplace (X=35.5, Z=-13.1; exterior brick chimney back sits outside Z=-14.0!)
+        mb.addFireplace(35.5, -13.1, 0.2, 0, 1, cTrimWhite, cBrick, 'retained', yMainOff);
+        mb.addBox(33.3, 4.65, -13.9, 37.7, 11.5, -12.4, cLimeBed2, 'retained', yMainOff, true);
+        //    - FP #5: Hunter-Green Den/Parlor Study West Wall Red-Brick Fireplace (X=31.0, Z=13.2; flush on East side of X=30.0!)
+        mb.addFireplace(31.0, 13.2, 0.2, 1, 0, cBrick, [0.46, 0.18, 0.22, 1.0], 'retained', yMainOff);
+        mb.addBox(30.1, 4.65, 10.9, 31.8, 11.5, 15.5, cBrick, 'retained', yMainOff, true);
       }
 
       // ======================================================================
@@ -1658,22 +1724,33 @@
       }
 
       // ======================================================================
-      // LEVEL 3: ROOF, CLIPPED GABLE, DORMERS, SKYLIGHTS, SOLAR & 5 CHIMNEYS (Sheets A-1.3 & A-2.4)
+      // LEVEL 3: ROOF, CLIPPED GABLE, DORMERS, SKYLIGHTS, SOLAR & CHIMNEYS (Sheets A-1.3 & A-2.4)
       // ======================================================================
-      // 5 Historic Masonry Chimneys (Exact coordinates matching fireplaces below AND roof penetrations on Sheets A-1.3 & A-2.4!)
-      const chimneys = [
-        [-14.0, 13.5], // Chimney 1: Shared Breakfast/Library & Dining Room fireplace chimney (West front)
-        [-15.0, -5.2], // Chimney 2: Exposed Kitchen brick column / Primary Bath chimney (Photos 6 & 7)
-        [16.5, 4.5],   // Chimney 3: Living Room ridge chimney rising through Attic Storage (Photo 1 & Sheet A-1.2/A-2.3)
-        [35.5, -14.0], // Chimney 4: Bedroom 2 exterior North brick chimney (Photos 4 & 5 & Sheet A-1.1/A-2.2)
-        [29.2, 13.2]   // Chimney 5: Den / Parlor Study West wall chimney (Photo 1 & Sheet A-1.1/A-2.2)
-      ];
-      for (const [cx, cz] of chimneys) {
-        const cBot = (state.floorView === 'attic') ? 12.6 + yAtticOff : -8.92 + yBaseOff;
-        const cTop = (state.floorView === 'main') ? 12.2 : (state.floorView === 'basement' ? 0.2 : (state.floorView === 'attic' ? 19.6 + yAtticOff : 24.8 + yRoofOff));
-        mb.addBox(cx - 1.35, cBot, cz - 1.35, cx + 1.35, cTop, cz + 1.35, cBrick, 'retained', 0, true);
-        if (state.floorView === 'all' || state.floorView === 'exploded') {
-          mb.addBox(cx - 1.55, cTop, cz - 1.55, cx + 1.55, cTop + 0.65, cz + 1.55, cIron, 'retained', 0, true);
+      // Exterior North Brick Chimney Stack behind Bedroom 2 (X=35.5, Z=-15.8 to -13.9 — outside North wall Z=-14.0 from grade to roof!)
+      if (state.floorView !== 'attic') {
+        const extTop = (state.floorView === 'basement') ? 0.0 : 12.0 + yMainOff;
+        mb.addBox(33.8, -2.8 + yBaseOff, -15.8, 37.2, extTop, -13.9, cBrick, 'retained', 0, true);
+      }
+      // Roof & Attic Brick Chimney Stacks (rising from ceiling/attic Y=12.0 through the roof so they NEVER block Main Floor or Basement rooms!):
+      if (state.floorView === 'all' || state.floorView === 'attic' || state.floorView === 'exploded') {
+        const roofChimneys = [
+          [-14.0, 12.2, 'retained'], // Chimney 1: Shared Library/Bar & Dining Room chimney (West front)
+          [16.8, 4.3, 'retained'],   // Chimney 3: Living Room chimney rising through Attic Chase (X=14.5..19.5, Z=2.5..6.0)
+          [35.5, -14.8, 'retained'], // Chimney 4: Bedroom 2 exterior North brick chimney
+          [30.8, 13.2, 'retained']   // Chimney 5: Parlor Study West wall chimney
+        ];
+        if (isAsBuilt || showGhost) {
+          // Chimney 2 (Old Kitchen brick flue at [-15.0, -5.2]) is DEMOLISHED in Planned renovation (Sheet A-2.4)!
+          roofChimneys.push([-15.0, -5.2, isAsBuilt ? 'retained' : 'demo']);
+        }
+        for (const [cx, cz, cRole] of roofChimneys) {
+          const cBot = (state.floorView === 'attic') ? 12.6 + yAtticOff : 12.0 + yRoofOff;
+          const cTop = (state.floorView === 'attic') ? 19.6 + yAtticOff : 24.8 + yRoofOff;
+          const chCol = (cRole === 'demo') ? cGhostRed : cBrick;
+          mb.addBox(cx - 1.35, cBot, cz - 1.35, cx + 1.35, cTop, cz + 1.35, chCol, cRole, 0, true);
+          if ((state.floorView === 'all' || state.floorView === 'exploded') && cRole !== 'demo') {
+            mb.addBox(cx - 1.55, cTop, cz - 1.55, cx + 1.55, cTop + 0.65, cz + 1.55, cIron, cRole, 0, true);
+          }
         }
       }
 
@@ -1682,8 +1759,10 @@
         const roofCol = isPlanned ? cSlate : cShingle;
         const mainRoofRole = isPlanned ? 'modified' : 'retained';
 
-        // 1. Main Historic Hipped Roof Core (Ridge at +21'-5.5", X=-28 to +44, Z=-14 to +20.5, Sheets A-1.3 & A-2.4)
-        mb.addHippedRoof(-28, -14, 44, 20.5, 12.2, 21.46, 'x', roofCol, mainRoofRole, yRoofOff, 1.5);
+        // 1. Main Historic Hipped Roof Core (Ridge at +21'-5.5", aligned with Library/Bar front wall Z=16.5 + stepped Dining & Study bays, Sheets A-1.3 & A-2.4)
+        mb.addHippedRoof(-28, -14, 44, 16.5, 12.2, 21.46, 'x', roofCol, mainRoofRole, yRoofOff, 1.4);
+        mb.addHippedRoof(-14, 6, 3, 19.5, 12.2, 16.2, 'z', roofCol, mainRoofRole, yRoofOff, 1.2);   // Dining Room front roof bay (to Z=19.5)
+        mb.addHippedRoof(30, 6, 44, 20.5, 12.2, 16.5, 'z', roofCol, mainRoofRole, yRoofOff, 1.2);   // Parlor Study front roof bay (to Z=20.5)
 
         // 2. LIVING ROOM CLIPPED-GABLE (JERKINHEAD) BRICK FRONT FACADE (X=3 to 30, Z=20.5 to 25.5, Photos 1 & 2 & Sheet A-1.4/A-2.5)
         const colBrickGable = mb.resolveColor(cBrick, 'retained');
@@ -2175,7 +2254,7 @@
               style="transform: translate(-50%, -100%); left: ${proj.x.toFixed(1)}px; top: ${proj.y.toFixed(1)}px;"
               class="pointer-events-auto absolute px-2 py-0.5 rounded-full text-xs font-bold shadow-md border z-30"
               style="background:#dc2626; color:#ffffff; border-color:#ffffff;">
-              Ã¢Å¡Â  ${pin.code}: ${pin.title.split(' ').slice(0, 3).join(' ')}…
+              ⚠ ${pin.code}: ${pin.title.split(' ').slice(0, 3).join(' ')}…
             </button>
           `);
         }
